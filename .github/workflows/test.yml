@@ -97,8 +97,7 @@ jobs:
 
       - name: Deploy
         if: |
-          startsWith(matrix.os, 'ubuntu-18.04') &&
-          github.ref == 'refs/heads/main'
+          startsWith(matrix.os, 'ubuntu-18.04')
         uses: ./
         with:
           # deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
