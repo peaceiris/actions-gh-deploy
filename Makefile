@@ -8,3 +8,14 @@ build:
 .PHONY: run
 run:
 	docker-compose run --rm dev bash
+
+.PHONY: pre-release
+pre-release:
+	npm run build
+	git add ./lib
+	git commit -m "chore: npm run build"
+
+.PHONY: remove-pre-release
+remove-pre-release:
+	git rm -f ./lib
+	git commit -m "chore: remove lib"
