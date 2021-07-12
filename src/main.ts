@@ -75,7 +75,8 @@ export async function run(): Promise<void> {
       baseRepo,
       hash
     );
-    await commit(inps.AllowEmptyCommit, commitMessage);
+    const dstSHA = await commit(inps.AllowEmptyCommit, commitMessage);
+    core.setOutput('dst_sha', dstSHA);
     core.endGroup();
 
     core.startGroup('Push the commit or tag');

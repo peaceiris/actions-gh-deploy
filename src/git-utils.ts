@@ -194,16 +194,32 @@ export function getCommitMessage(
   return subject;
 }
 
-export async function commit(allowEmptyCommit: boolean, msg: string): Promise<void> {
+export async function commit(allowEmptyCommit: boolean, msg: string): Promise<string> {
   try {
     if (allowEmptyCommit) {
       await exec.exec('git', ['commit', '--allow-empty', '-m', `${msg}`]);
     } else {
       await exec.exec('git', ['commit', '-m', `${msg}`]);
     }
+
+    const result: CmdResult = {
+      exitcode: 0,
+      output: ''
+    };
+    const options = {
+      listeners: {
+        stdout: (data: Buffer): void => {
+          result.output += data.toString();
+        }
+      }
+    };
+    result.exitcode = await exec.exec('git', ['rev-parse', 'HEAD'], options);
+
+    return result.output;
   } catch (e) {
     core.info('[INFO] skip commit');
     core.debug(`[INFO] skip commit ${e.message}`);
+    return '';
   }
 }
 

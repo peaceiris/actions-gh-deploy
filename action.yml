@@ -77,3 +77,6 @@ inputs:
     description: 'Set files or directories to exclude from a publish directory.'
     required: false
     default: '.github'
+outputs:
+  dst_sha:
+    description: 'Deployed commit hash.'
