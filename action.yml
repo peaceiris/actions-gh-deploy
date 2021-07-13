@@ -14,6 +14,7 @@ inputs:
   github_token:
     description: 'Set a generated GITHUB_TOKEN for pushing to the remote branch.'
     required: false
+    default: ${{ github.token }}
   personal_token:
     description: 'Set a personal access token for pushing to the remote branch.'
     required: false

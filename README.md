@@ -25,14 +25,8 @@ The next example step will deploy `./public` directory to the remote `gh-pages` 
 - name: Deploy
   uses: peaceiris/actions-gh-pages@v3
   with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
     publish_dir: ./public
 ```
-
-For newbies of GitHub Actions:
-Note that the `GITHUB_TOKEN` is **NOT** a personal access token.
-A GitHub Actions runner automatically creates a `GITHUB_TOKEN` secret to authenticate in your workflow.
-So, you can start to deploy immediately without any configuration.
 
 
 
@@ -164,7 +158,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
 ```
 
@@ -229,7 +222,6 @@ The default is `gh-pages`.
 - name: Deploy
   uses: peaceiris/actions-gh-pages@v3
   with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
     publish_branch: your-branch  # default: gh-pages
 ```
 
@@ -241,7 +233,6 @@ A source directory to deploy to GitHub Pages. The default is `public`.
 - name: Deploy
   uses: peaceiris/actions-gh-pages@v3
   with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
     publish_dir: ./out  # default: public
 ```
 
@@ -256,7 +247,6 @@ A destination subdirectory on a publishing branch. The default is empty.
 - name: Deploy
   uses: peaceiris/actions-gh-pages@v3
   with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
     destination_dir: subdir
 ```
 
@@ -273,7 +263,6 @@ Values should be split with a comma.
 - name: Deploy
   uses: peaceiris/actions-gh-pages@v3
   with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
     exclude_assets: '.github,exclude-file1,exclude-file2'
 ```
 
@@ -285,7 +274,6 @@ Set `exclude_assets` to empty for including the `.github` directory to deploymen
   with:
     deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}   # Recommended for this usage
     # personal_token: ${{ secrets.PERSONAL_TOKEN }} # An alternative
-    # github_token: ${{ secrets.GITHUB_TOKEN }}     # This does not work for this usage
     exclude_assets: ''
 ```
 
@@ -295,7 +283,6 @@ The `exclude_assets` option supports glob patterns.
 - name: Deploy
   uses: peaceiris/actions-gh-pages@v3
   with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
     exclude_assets: '.github,exclude-file.txt,exclude-dir/**.txt'
 ```
 
@@ -310,7 +297,6 @@ For more details about the `CNAME` file, read the official documentation: [Manag
 - name: Deploy
   uses: peaceiris/actions-gh-pages@v3
   with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
     publish_dir: ./public
     cname: github.com
 ```
@@ -330,7 +316,6 @@ Bypassing Jekyll makes the deployment faster and is necessary if you are deployi
 - name: Deploy
   uses: peaceiris/actions-gh-pages@v3
   with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
     publish_dir: ./public
     enable_jekyll: true
 ```
@@ -347,7 +332,6 @@ For example:
 - name: Deploy
   uses: peaceiris/actions-gh-pages@v3
   with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
     publish_dir: ./public
     allow_empty_commit: true
 ```
@@ -367,7 +351,6 @@ For example:
 - name: Deploy
   uses: peaceiris/actions-gh-pages@v3
   with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
     publish_dir: ./public
     keep_files: true
 ```
@@ -413,7 +396,6 @@ This allows you to make your publish branch with only the latest commit.
 - name: Deploy
   uses: peaceiris/actions-gh-pages@v3
   with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
     publish_dir: ./public
     force_orphan: true
 ```
@@ -427,7 +409,6 @@ A commit is always created with the same user.
 - name: Deploy
   uses: peaceiris/actions-gh-pages@v3
   with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
     publish_dir: ./public
     user_name: 'github-actions[bot]'
     user_email: 'github-actions[bot]@users.noreply.github.com'
@@ -444,7 +425,6 @@ When we create a commit with a message `docs: Update some post`, a deployment co
 - name: Deploy
   uses: peaceiris/actions-gh-pages@v3
   with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
     publish_dir: ./public
     commit_message: ${{ github.event.head_commit.message }}
 ```
@@ -458,7 +438,6 @@ use the `full_commit_message` option instead of the `commit_message` option.
 - name: Deploy
   uses: peaceiris/actions-gh-pages@v3
   with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
     publish_dir: ./public
     full_commit_message: ${{ github.event.head_commit.message }}
 ```
@@ -498,7 +477,6 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           tag_name: ${{ steps.prepare_tag.outputs.deploy_tag_name }}
           tag_message: 'Deployment ${{ steps.prepare_tag.outputs.tag_name }}'
@@ -674,7 +652,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
 ```
 
@@ -724,7 +701,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
 ```
 
@@ -779,7 +755,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
 ```
 
@@ -830,7 +805,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
 ```
 
@@ -889,7 +863,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./website/build
 ```
 
@@ -951,7 +924,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
 ```
 
@@ -992,7 +964,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./book
 ```
 
@@ -1036,7 +1007,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
 ```
 
@@ -1085,7 +1055,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
 ```
 
@@ -1115,7 +1084,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./
           allow_empty_commit: true
           enable_jekyll: true
@@ -1171,7 +1139,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./Output
 ```
 
