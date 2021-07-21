@@ -49,7 +49,7 @@
   "dependencies": {
     "@actions/core": "^1.2.7",
     "@actions/exec": "^1.0.4",
-    "@actions/github": "^4.0.0",
+    "@actions/github": "^5.0.0",
     "@actions/glob": "^0.1.1",
     "@actions/io": "^1.1.0",
     "@types/shelljs": "^0.8.8",
