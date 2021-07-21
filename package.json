@@ -47,7 +47,7 @@
   },
   "homepage": "https://github.com/peaceiris/actions-gh-pages#readme",
   "dependencies": {
-    "@actions/core": "^1.2.7",
+    "@actions/core": "^1.4.0",
     "@actions/exec": "^1.0.4",
     "@actions/github": "^4.0.0",
     "@actions/glob": "^0.1.1",
