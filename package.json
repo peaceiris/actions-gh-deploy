@@ -51,7 +51,7 @@
     "@actions/exec": "^1.0.4",
     "@actions/github": "^4.0.0",
     "@actions/glob": "^0.1.1",
-    "@actions/io": "^1.1.0",
+    "@actions/io": "^1.1.1",
     "@types/shelljs": "^0.8.8",
     "shelljs": "^0.8.4"
   },
